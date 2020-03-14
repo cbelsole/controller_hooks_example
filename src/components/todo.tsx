@@ -9,9 +9,11 @@ const Todo: React.FC<Props> = ({ item, done, completeTodo }) => {
   return (
     <div>
       task: {item} is {done ? 'done' : 'not done'}{' '}
-      <button type="button" onClick={() => completeTodo(item)}>
-        Complete
-      </button>
+      {!done && (
+        <button type="button" onClick={() => completeTodo(item)}>
+          Complete?
+        </button>
+      )}
     </div>
   );
 };
