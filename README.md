@@ -1,3 +1,5 @@
+![Todo app demo](todo_app_demo.gif 'Todo app demo')
+
 This is an example repo is a todo app showing how to convert a React class component to a functional component with hooks. The steps for doing so are laid out in the [commit log](https://github.com/cbelsole/controller_hooks_example/commits/master).
 
 ## Branches:
