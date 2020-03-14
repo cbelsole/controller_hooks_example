@@ -37,7 +37,7 @@ export default class Controller extends React.Component<Props, State> {
   render() {
     const { todos } = this.state;
 
-    if (!todos) {
+    if (!todos.length) {
       return <div>loading...</div>;
     }
 
