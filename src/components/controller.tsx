@@ -7,7 +7,7 @@ interface State {
   todos: iTodo[];
 }
 
-export default class Controller extends React.Component<Props, State> {
+const Controller: React.FunctionComponent = () =>  {
   constructor(props: Props) {
     super(props);
     this.state = { todos: [] };
@@ -34,18 +34,19 @@ export default class Controller extends React.Component<Props, State> {
     alert('Todos are complete.');
   };
 
-  render() {
-    const { todos } = this.state;
+  const { todos } = this.state;
 
-    if (!todos.length) {
-      return <div>loading...</div>;
-    }
-
-    return (
-      <div>
-        <TodoList completeTodo={this.completeTodo} todos={todos} />
-        <button onClick={this.isAllComplete}>All complete?</button>
-      </div>
-    );
+  if (!todos.length) {
+    return <div>loading...</div>;
   }
+
+  return (
+    <div>
+      <TodoList completeTodo={this.completeTodo} todos={todos} />
+      <button onClick={this.isAllComplete}>All complete?</button>
+    </div>
+  );
+
 }
+
+export default Controller;
