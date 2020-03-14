@@ -4,15 +4,14 @@ import Todo from './todo';
 
 interface Props {
   todos: Array<iTodo>;
-  completeTodo: (item: string) => void;
 }
 
-const TodoList: React.FC<Props> = ({ todos, completeTodo }) => {
+const TodoList: React.FC<Props> = ({ todos }) => {
   return (
     <ul>
       {todos.map(todo => (
         <li>
-          <Todo completeTodo={completeTodo} {...todo} />
+          <Todo {...todo} />
         </li>
       ))}
     </ul>

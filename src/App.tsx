@@ -1,10 +1,13 @@
 import React from 'react';
 import Controller from './components/controller';
+import TodoProvider from './components/todoProvider';
 
 function App() {
   return (
     <div>
-      <Controller />
+      <TodoProvider>
+        <Controller />
+      </TodoProvider>
     </div>
   );
 }

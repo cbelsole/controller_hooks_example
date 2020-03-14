@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { getTodos, completeTodo as completeTodoAPI, iTodo } from '../api/todos';
+import React, { useEffect, useContext } from 'react';
 import TodoList from './todoList';
+import { todoContext } from './todoProvider';
 
 const Controller: React.FunctionComponent = () => {
-  const [todos, setTodos] = useState<iTodo[]>([]);
-
-  const completeTodo = (item: string) => {
-    completeTodoAPI(item).then(todos => setTodos(todos));
-  };
+  const { todos, getTodos } = useContext(todoContext);
 
   const isAllComplete = () => {
     for (let i = 0; i < todos.length; i++) {
@@ -21,8 +17,8 @@ const Controller: React.FunctionComponent = () => {
   };
 
   useEffect(() => {
-    getTodos().then(todos => setTodos(todos));
-  }, []);
+    getTodos();
+  }, [getTodos]);
 
   if (!todos.length) {
     return <div>loading...</div>;
@@ -30,7 +26,7 @@ const Controller: React.FunctionComponent = () => {
 
   return (
     <div>
-      <TodoList completeTodo={completeTodo} todos={todos} />
+      <TodoList todos={todos} />
       <button onClick={isAllComplete}>All complete?</button>
     </div>
   );
