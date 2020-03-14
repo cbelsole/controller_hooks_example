@@ -17,11 +17,11 @@ const Controller: React.FunctionComponent = () =>  {
     getTodos().then(todos => this.setState({ todos }));
   }
 
-  completeTodo = (item: string) => {
+  const completeTodo = (item: string) => {
     completeTodoAPI(item).then(todos => this.setState({ todos }));
   };
 
-  isAllComplete = () => {
+  const isAllComplete = () => {
     const { todos } = this.state;
 
     for (let i = 0; i < todos.length; i++) {
@@ -42,8 +42,8 @@ const Controller: React.FunctionComponent = () =>  {
 
   return (
     <div>
-      <TodoList completeTodo={this.completeTodo} todos={todos} />
-      <button onClick={this.isAllComplete}>All complete?</button>
+      <TodoList completeTodo={completeTodo} todos={todos} />
+      <button onClick={isAllComplete}>All complete?</button>
     </div>
   );
 
