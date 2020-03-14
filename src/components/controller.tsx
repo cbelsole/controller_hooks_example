@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getTodos, completeTodo as completeTodoAPI, iTodo } from '../api/todos';
 import TodoList from './todoList';
 
 interface Props {}
 
-const Controller: React.FunctionComponent = () =>  {
-  const [todos, setTodos] = useState<iTodo[]>([])
-
-  componentDidMount() {
-    getTodos().then(todos => setTodos(todos));
-  }
+const Controller: React.FunctionComponent = () => {
+  const [todos, setTodos] = useState<iTodo[]>([]);
 
   const completeTodo = (item: string) => {
     completeTodoAPI(item).then(todos => setTodos(todos));
@@ -26,6 +22,10 @@ const Controller: React.FunctionComponent = () =>  {
     alert('Todos are complete.');
   };
 
+  useEffect(() => {
+    getTodos().then(todos => setTodos(todos));
+  }, []);
+
   if (!todos.length) {
     return <div>loading...</div>;
   }
@@ -36,7 +36,6 @@ const Controller: React.FunctionComponent = () =>  {
       <button onClick={isAllComplete}>All complete?</button>
     </div>
   );
-
-}
+};
 
 export default Controller;
