@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getTodos, completeTodo as completeTodoAPI, iTodo } from '../api/todos';
 import TodoList from './todoList';
 
-interface Props {}
-
 const Controller: React.FunctionComponent = () => {
   const [todos, setTodos] = useState<iTodo[]>([]);
 
